@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: auto;
+    margin: 0 50px;
+}
+
+.article-image {
+    width: 250px;
+    height: 150px;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+/* -------------------------------- 
+
+Title: Tabbed Navigation
+Descr: Tabbed secondary navigation
+
+-------------------------------- */
+.navbar {
+    background-color: black;
+    text-align: -webkit-center;
+    display: inline-block;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 500px) {
+    .s-tabs__list {
+        margin-left: 16px;
+    }
+}
+
+@media only screen and (min-width: 501px) {
+    #title {
+        display: grid;
+        grid-column-start: 1;
+        grid-column-end: span 4;
+
+        text-align: center;
+    }
+
+    #output {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    hr {
+        visibility: hidden;
+    }
+}
+
+h1 {
+    margin-top: 55px;
+}
+
+.s-tabs {
+    width: 400px;
+    pointer-events: auto;
+}
+
+.s-tabs__list {
+    display: flex;
+    overflow: auto;
+    -webkit-overflow-scrolling: auto;
+    list-style-type: none;
+    width: 100%;
+}
+
+li {
+    padding-right: 20px;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+a:hover {
+    color: white;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    text-align: -webkit-center;
+    display: inline-block;
+    width: 100%;
+    line-height: .5em;
+    
+}
