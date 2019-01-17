@@ -8,7 +8,7 @@
     - World
     - Politics
     - Business
-    - Sports
+    - Financial
 
 ## Used grid for desktop-view to minimilize white-space.    
         

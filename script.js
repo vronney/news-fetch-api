@@ -109,14 +109,14 @@ function getBusinessNews() {
 /************************* Sports *************
 **********************************************/
 
-document.getElementById('getSportsNews').addEventListener('click', getSportsNews);
+document.getElementById('getFinancialNews').addEventListener('click', getFinancialNews);
 
-function getSportsNews() {
-    fetch('https://newsapi.org/v2/everything?sources=fox-sports&apiKey=c02ce0b8722e4571b94f800934093ac1')
+function getFinancialNews() {
+    fetch('https://newsapi.org/v2/everything?sources=financial-times&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            let title = '<h1>Sports</h1>';
+            let title = '<h1>Financial</h1>';
             let output = ' ';
             data.articles.map((article) => {
                 output += `
