@@ -22,6 +22,7 @@ function getText() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            window.scrollTo(0,0);
         });
 }
 
@@ -49,6 +50,7 @@ function getWorldNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            window.scrollTo(0, 0);
         });
 }
 
@@ -76,6 +78,7 @@ function getPoliticsNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            window.scrollTo(0, 0);
         });
 }
 
@@ -103,6 +106,7 @@ function getBusinessNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            window.scrollTo(0, 0);
         });
 }
 
@@ -130,5 +134,6 @@ function getFinancialNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            window.scrollTo(0, 0);
         });
 }
