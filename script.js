@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", getText);
 
 document.getElementById('getUsNews').addEventListener('click', getText);
@@ -22,12 +21,13 @@ function getText() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
-            window.scrollTo(0,0);
+            // This will have the next window open at the top of the page.  
+            window.scrollTo(0, 0);
         });
 }
 
 /*************** World News *******
-********************************/
+ ********************************/
 
 document.getElementById('getWorldNews').addEventListener('click', getWorldNews);
 
@@ -50,12 +50,13 @@ function getWorldNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
 }
 
 /******************** Politics ******
-***********************************/
+ ***********************************/
 
 document.getElementById('getPoliticsNews').addEventListener('click', getPoliticsNews);
 
@@ -78,12 +79,13 @@ function getPoliticsNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
 }
 
 /***************** Business ***********
-**************************************/
+ **************************************/
 
 document.getElementById('getBusinessNews').addEventListener('click', getBusinessNews);
 
@@ -106,12 +108,13 @@ function getBusinessNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
 }
 
 /************************* Sports *************
-**********************************************/
+ **********************************************/
 
 document.getElementById('getFinancialNews').addEventListener('click', getFinancialNews);
 
@@ -134,6 +137,7 @@ function getFinancialNews() {
             });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
+            // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
 }
