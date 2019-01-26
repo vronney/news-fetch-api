@@ -163,7 +163,7 @@ li {
 
 a {
     color: grey;
-    text-decoration: none;
+    text-decoration: none !important;
     display: inline-block;
     white-space: nowrap;
     z-index: 1;
@@ -171,6 +171,14 @@ a {
 
 a:hover {
     color: white;
+}
+
+:focus {
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 .footer {
