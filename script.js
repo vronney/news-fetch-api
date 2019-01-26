@@ -11,11 +11,10 @@ function getText() {
             let output = ' ';
             data.articles.map((article) => {
                 output += `
-        <div>
+        <div class="card">
         <h2 class="article-title">${article.title}</h2>
         <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
         <p class="article-description">${article.description}</p>
-        <hr>
         </div>
         `;
             });
@@ -40,11 +39,10 @@ function getWorldNews() {
             let output = ' ';
             data.articles.map((article) => {
                 output += `
-        <div>
+        <div class="card">
         <h2 class="article-title">${article.title}</h2>
         <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
         <p class="article-description">${article.description}</p>
-        <hr>
         </div>
       `;
             });
@@ -69,11 +67,10 @@ function getPoliticsNews() {
             let output = ' ';
             data.articles.map((article) => {
                 output += `
-        <div>
+        <div class="card">
         <h2 class="article-title">${article.title}</h2>
         <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
         <p class="article-description">${article.description}</p>
-        <hr>
         </div>
       `;
             });
@@ -98,11 +95,10 @@ function getBusinessNews() {
             let output = ' ';
             data.articles.map((article) => {
                 output += `
-        <div>
+        <div class="card">
         <h2 class="article-title">${article.title}</h2>
         <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
         <p class="article-description">${article.description}</p>
-        <hr>
         </div>
       `;
             });
@@ -113,7 +109,7 @@ function getBusinessNews() {
         });
 }
 
-/************************* Sports *************
+/************************* Financial *************
  **********************************************/
 
 document.getElementById('getFinancialNews').addEventListener('click', getFinancialNews);
@@ -127,11 +123,10 @@ function getFinancialNews() {
             let output = ' ';
             data.articles.map((article) => {
                 output += `
-        <div>
+        <div class="card">
         <h2 class="article-title">${article.title}</h2>
         <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
         <p class="article-description">${article.description}</p>
-        <hr>
         </div>
       `;
             });
@@ -140,4 +135,20 @@ function getFinancialNews() {
             // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
+}
+
+window.onscroll = function () {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
