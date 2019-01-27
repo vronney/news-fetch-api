@@ -71,7 +71,7 @@ Descr: Tabbed secondary navigation
     /* Hidden by default */
     position: fixed;
     /* Fixed/sticky position */
-    bottom: 20px;
+    bottom: 2px;
     /* Place the button at the bottom of the page */
     right: 30px;
     /* Place the button 30px from the right */
@@ -81,24 +81,24 @@ Descr: Tabbed secondary navigation
     /* Remove borders */
     outline: none;
     /* Remove outline */
-    background-color: Transparent;
+    background-color: black;
     /* Set a background color */
-    color: red;
+    color: grey;
     /* Text color */
     cursor: pointer;
     /* Add a mouse pointer on hover */
-    padding: 15px;
+    padding: 10px;
     /* Some padding */
     border-radius: 10px;
     /* Rounded corners */
     font-size: 18px;
     /* Increase font size */
-    border: 3px solid red;
+    border: 3px solid grey;
     font-weight: bold;
 }
 
 #myBtn:hover {
-    background-color: yellow;
+    background-color: white;
     /* Add a dark-grey background on hover */
 }
 

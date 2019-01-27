@@ -101,7 +101,7 @@ function getBusinessNews() {
         <p class="article-description">${article.description}</p>
         </div>
       `;
-            });
+        });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
             // This will have the next window open at the top of the page.
@@ -140,7 +140,7 @@ function getFinancialNews() {
 window.onscroll = function () {scrollFunction()};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 1500 || document.documentElement.scrollTop > 1500) {
         document.getElementById("myBtn").style.display = "block";
     } else {
         document.getElementById("myBtn").style.display = "none";
@@ -152,3 +152,4 @@ function topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
