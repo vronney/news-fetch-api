@@ -107,7 +107,8 @@ function getBusinessNews() {
             // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
-}
+    }
+    
 
 /************************* Financial *************
  **********************************************/
