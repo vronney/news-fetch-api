@@ -101,14 +101,14 @@ function getBusinessNews() {
         <p class="article-description">${article.description}</p>
         </div>
       `;
-        });
+            });
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
             // This will have the next window open at the top of the page.
             window.scrollTo(0, 0);
         });
-    }
-    
+}
+
 
 /************************* Financial *************
  **********************************************/
@@ -137,6 +137,43 @@ function getFinancialNews() {
             window.scrollTo(0, 0);
         });
 }
+
+/******************** My Preference News ********************************/
+document.getElementById('getWorldNews').addEventListener('keypress', getAllNews);
+
+function getAllNews() {
+
+    let url = 'https://newsapi.org/v2/everything?q=';
+    let api = 'c02ce0b8722e4571b94f800934093ac1';
+    let input = document.getElementById('search').value;
+    let key = event.keyCode || event.which;
+
+    if (key == 13) {
+
+        fetch(url + `${input}` + `&apiKey=${api}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                let title = '<h1>My News</h1>';
+                let output = ' ';
+                data.articles.map((article) => {
+                    output += `
+        <div class="card">
+        <h2 class="article-title">${article.title}</h2>
+        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
+        <p class="article-description">${article.description}</p>
+        </div>
+      `;
+                });
+                document.getElementById('title').innerHTML = title;
+                document.getElementById('output').innerHTML = output;
+                // This will have the next window open at the top of the page.
+                window.scrollTo(0, 0);
+            });
+    }
+}
+
+
 
 window.onscroll = function () {scrollFunction()};
 

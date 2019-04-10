@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>News Fetch API</title>
-  <link rel="stylesheet" type="text/css" href="style.css"> 
+  <link rel="stylesheet" href="style.css" type="text/css">
+
 </head>
 
 <body>
@@ -19,8 +20,12 @@
           <li><a href="#0" id="getWorldNews">World</a></li>
           <li><a href="#0" id="getPoliticsNews">Politics</a></li>
           <li><a href="#0" id="getBusinessNews">Business</a></li>
-          <li><a href="#0" id="getFinancialNews">Financial</a></li>
+          <li><a href="#0" id="getFinancialNews">Financials</a></li>
         </ul>
+        <div class="searchBox">
+          <input type="text" value="" class="searchTerm" id="search" onkeypress="getAllNews()"
+            placeholder="Type Topic Then Hit Enter">
+        </div>
       </nav>
     </div>
     <div id="title">
@@ -28,16 +33,18 @@
     <div id="output">
 
     </div>
-    </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <div class="footer">
-        <footer>
-            <h2>R&E Web Designs</h2>
-            <h3>&copy; Created 2019</h3>
-        </footer>
-    </div>
 
-<script src="script.js"></script>
+  </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <div class="footer">
+    <footer>
+      <h2>R&E Web Designs</h2>
+      <h3>&copy; Created 2019</h3>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://use.fontawesome.com/8195270b27.js"></script>
 
 </body>
 

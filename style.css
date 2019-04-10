@@ -102,10 +102,17 @@ Descr: Tabbed secondary navigation
     /* Add a dark-grey background on hover */
 }
 
+.searchBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 
 @media only screen and (max-width: 500px) {
     .s-tabs__list {
-        margin-left: 16px;
+        padding-left: 0;
+        justify-content: space-evenly;
     }
 
     .card:last-child {
@@ -115,7 +122,6 @@ Descr: Tabbed secondary navigation
     #title h1 {
         text-align: center;
     }
-
 }
 
 @media only screen and (min-width: 501px) {
@@ -123,7 +129,6 @@ Descr: Tabbed secondary navigation
         display: grid;
         grid-column-start: 1;
         grid-column-end: span 4;
-
         text-align: center;
     }
 
@@ -137,10 +142,40 @@ Descr: Tabbed secondary navigation
     hr {
         visibility: hidden;
     }
+
+    li {
+        margin-right: 20px;
+    }
+
+    .s-tabs {
+        display: inline-flex;
+    }
+
+    .navbar {
+        text-align: center;
+    }
+
+    .s-tabs__list {
+        padding-left: 0;
+        margin-right: 20px;
+    }
+
+    .searchBox {
+        margin-top: 18px;
+        margin-left: 20px;
+    }
+
+    .searchTerm {
+        font-size: 1rem;
+    }
+
+    a {
+        font-size: 1.5rem;
+    }
 }
 
 h1 {
-    margin-top: 55px;
+    margin-top: 85px;
 }
 
 .s-tabs {
@@ -150,11 +185,12 @@ h1 {
 
 .s-tabs__list {
     display: flex;
-    overflow: auto;
-    -webkit-overflow-scrolling: auto;
+    overflow: none;
+    -webkit-overflow-scrolling: none;
     list-style-type: none;
     width: 100%;
     margin-left: 0;
+    justify-content: space-around;
 }
 
 li {
@@ -189,5 +225,21 @@ a:hover {
     display: inline-block;
     width: 100%;
     line-height: .5em;
-    
+
+}
+
+.searchTerm {
+    float: left;
+    width: auto;
+    border: 1px solid #1400cc;
+    padding: 5px;
+    height: 10px;
+    /* border-radius: 5px; */
+    outline: none;
+    color: #000000;
+    background-color: whitesmoke;
+}
+
+.searchTerm:focus {
+    color: #00B4CC;
 }
