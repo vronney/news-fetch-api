@@ -9,6 +9,8 @@
     - Politics
     - Business
     - Financial
+- added a search box for the user to enter a topic of their choosing to view
+    - the user enters the topic and then presses enter
 
 ## Used grid for desktop-view to minimilize white-space.    
         
