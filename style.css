@@ -238,6 +238,7 @@ a:hover {
     outline: none;
     color: #000000;
     background-color: whitesmoke;
+    font-style: italic;
 }
 
 .searchTerm:focus {
