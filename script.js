@@ -113,14 +113,14 @@ function getBusinessNews() {
 /************************* Financial *************
  **********************************************/
 
-document.getElementById('getFinancialNews').addEventListener('click', getFinancialNews);
+document.getElementById('getEntertainmentNews').addEventListener('click', getEntertainmentNews);
 
-function getFinancialNews() {
-    fetch('https://newsapi.org/v2/everything?sources=financial-times&apiKey=c02ce0b8722e4571b94f800934093ac1')
+function getEntertainmentNews() {
+    fetch('https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            let title = '<h1>Financial</h1>';
+            let title = '<h1>Entertainment</h1>';
             let output = ' ';
             data.articles.map((article) => {
                 output += `
@@ -145,16 +145,22 @@ function getAllNews() {
 
     let url = 'https://newsapi.org/v2/everything?q=';
     let api = 'c02ce0b8722e4571b94f800934093ac1';
-    let input = document.getElementById('search').value;
+    let textInput = document.getElementById('search');
+    let topic = textInput.value.charAt(0).toUpperCase() + textInput.value.slice(1);
+
+    textInput.addEventListener('input', function (e) {
+        topic = e.target.value;
+    });
+
     let key = event.keyCode || event.which;
 
     if (key == 13) {
 
-        fetch(url + `${input}` + `&apiKey=${api}`)
+        fetch(url + `${topic}` + `&apiKey=${api}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                let title = '<h1>My News</h1>';
+                let title = `<h1>${topic} News</h1>`;
                 let output = ' ';
                 data.articles.map((article) => {
                     output += `
@@ -169,8 +175,12 @@ function getAllNews() {
                 document.getElementById('output').innerHTML = output;
                 // This will have the next window open at the top of the page.
                 window.scrollTo(0, 0);
+
             });
+        // clear input
+        textInput.value = "";
     }
+
 }
 
 

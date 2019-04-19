@@ -8,7 +8,8 @@
     - World
     - Politics
     - Business
-    - Financial
+    - Tabloid
+    - My News 
 - added a search box for the user to enter a topic of their choosing to view
     - the user enters the topic and then presses enter
 
