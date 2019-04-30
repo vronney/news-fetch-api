@@ -146,8 +146,12 @@ function getAllNews() {
     let url = 'https://newsapi.org/v2/everything?q=';
     let api = 'c02ce0b8722e4571b94f800934093ac1';
     let textInput = document.getElementById('search');
-    let topic = textInput.value.charAt(0).toUpperCase() + textInput.value.slice(1);
 
+    // Function will capitalize the first letter of every word in the sentence
+    
+    let topic = textInput.value.toLowerCase().split(/(\s|-)+/).map(function (word) {
+        return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(" ");
     textInput.addEventListener('input', function (e) {
         topic = e.target.value;
     });
