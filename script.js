@@ -9,15 +9,25 @@ function getText() {
             console.log(data);
             let title = '<h1>Top U.S. Stories</h1>';
             let output = ' ';
+                       
             data.articles.map((article) => {
+                let imageOutput = '';
+
+                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                 output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-        `;
+            <div class="card">
+            <h2 class="article-title">${article.title}</h2>
+            <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+            <p class="article-description">${article.description}</p>
+            </div>
+            `;
             });
+
+         
             document.getElementById('title').innerHTML = title;
             document.getElementById('output').innerHTML = output;
             // This will have the next window open at the top of the page.  
@@ -38,10 +48,17 @@ function getWorldNews() {
             let title = '<h1>World</h1>';
             let output = ' ';
             data.articles.map((article) => {
+                let imageOutput = '';
+
+                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
+        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -66,10 +83,17 @@ function getPoliticsNews() {
             let title = '<h1>Politics</h1>';
             let output = ' ';
             data.articles.map((article) => {
+                let imageOutput = '';
+
+                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
+        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -94,10 +118,17 @@ function getBusinessNews() {
             let title = '<h1>Business</h1>';
             let output = ' ';
             data.articles.map((article) => {
+                let imageOutput = '';
+
+                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
+        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -123,10 +154,17 @@ function getEntertainmentNews() {
             let title = '<h1>Entertainment</h1>';
             let output = ' ';
             data.articles.map((article) => {
+                let imageOutput = '';
+
+                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
+        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -167,14 +205,22 @@ function getAllNews() {
                 let title = `<h1>${topic} News</h1>`;
                 let output = ' ';
                 data.articles.map((article) => {
+                
+                let imageOutput = '';
+
+                    if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    imageOutput = './images/No_img.jpg';
+                } else {
+                    imageOutput = `${article.urlToImage}`;
+                }
                     output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${article.urlToImage}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-      `;
-                });
+                <div class="card">
+                <h2 class="article-title">${article.title}</h2>
+                <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+                <p class="article-description">${article.description}</p>
+                </div>
+            `;
+            });
                 document.getElementById('title').innerHTML = title;
                 document.getElementById('output').innerHTML = output;
                 // This will have the next window open at the top of the page.
