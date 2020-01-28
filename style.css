@@ -112,7 +112,9 @@ Descr: Tabbed secondary navigation
 @media only screen and (max-width: 500px) {
     .s-tabs__list {
         padding-left: 0;
-        justify-content: space-evenly;
+        margin-left: 5px;
+        justify-content: center;
+        width: 75% !important;
     }
 
     .card:last-child {
