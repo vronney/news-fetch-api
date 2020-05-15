@@ -1,3 +1,5 @@
+/**********************US News *****************************************/
+
 document.addEventListener("DOMContentLoaded", getText);
 
 document.getElementById('getUsNews').addEventListener('click', getText);
@@ -70,17 +72,17 @@ function getWorldNews() {
         });
 }
 
-/******************** Politics ******
+/******************** Health ******
  ***********************************/
 
 document.getElementById('getPoliticsNews').addEventListener('click', getPoliticsNews);
 
 function getPoliticsNews() {
-    fetch('https://newsapi.org/v2/top-headlines?sources=politico&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            let title = '<h1>Politics</h1>';
+            let title = '<h1>Health</h1>';
             let output = ' ';
             data.articles.map((article) => {
                 let imageOutput = '';
