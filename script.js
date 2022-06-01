@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", getText);
 document.getElementById('getUsNews').addEventListener('click', getText);
 
 function getText() {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -43,7 +43,7 @@ function getText() {
 document.getElementById('getWorldNews').addEventListener('click', getWorldNews);
 
 function getWorldNews() {
-    fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -78,7 +78,7 @@ function getWorldNews() {
 document.getElementById('getPoliticsNews').addEventListener('click', getPoliticsNews);
 
 function getPoliticsNews() {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -113,7 +113,7 @@ function getPoliticsNews() {
 document.getElementById('getBusinessNews').addEventListener('click', getBusinessNews);
 
 function getBusinessNews() {
-    fetch('https://newsapi.org/v2/everything?sources=business-insider&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?sources=business-insider&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -149,7 +149,7 @@ function getBusinessNews() {
 document.getElementById('getEntertainmentNews').addEventListener('click', getEntertainmentNews);
 
 function getEntertainmentNews() {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=c02ce0b8722e4571b94f800934093ac1')
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
