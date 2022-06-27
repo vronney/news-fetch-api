@@ -1,3 +1,8 @@
+const newsApi = 'pub_87471c6119e680aa3bcc00c80a9c778beda6';
+const url = `https://newsdata.io/api/1/news?apikey=${newsApi}`;
+
+console.log(url);
+
 /**********************US News *****************************************/
 
 document.addEventListener("DOMContentLoaded", getText);
@@ -5,25 +10,25 @@ document.addEventListener("DOMContentLoaded", getText);
 document.getElementById('getUsNews').addEventListener('click', getText);
 
 function getText() {
-    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch(`${url}&country=us`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
             let title = '<h1>Top U.S. Stories</h1>';
             let output = ' ';
                        
-            data.articles.map((article) => {
+            data.results.map((article) => {
                 let imageOutput = '';
 
-                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                 output += `
             <div class="card">
             <h2 class="article-title">${article.title}</h2>
-            <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+            <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
             <p class="article-description">${article.description}</p>
             </div>
             `;
@@ -43,24 +48,24 @@ function getText() {
 document.getElementById('getWorldNews').addEventListener('click', getWorldNews);
 
 function getWorldNews() {
-    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch(`${url}&category=world`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
             let title = '<h1>World</h1>';
             let output = ' ';
-            data.articles.map((article) => {
+            data.results.map((article) => {
                 let imageOutput = '';
 
-                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -78,24 +83,24 @@ function getWorldNews() {
 document.getElementById('getPoliticsNews').addEventListener('click', getPoliticsNews);
 
 function getPoliticsNews() {
-    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch(`${url}&category=health`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
             let title = '<h1>Health</h1>';
             let output = ' ';
-            data.articles.map((article) => {
+            data.results.map((article) => {
                 let imageOutput = '';
 
-                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -113,24 +118,24 @@ function getPoliticsNews() {
 document.getElementById('getBusinessNews').addEventListener('click', getBusinessNews);
 
 function getBusinessNews() {
-    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?sources=business-insider&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch(`${url}&category=business`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
             let title = '<h1>Business</h1>';
             let output = ' ';
-            data.articles.map((article) => {
+            data.results.map((article) => {
                 let imageOutput = '';
 
-                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -149,24 +154,24 @@ function getBusinessNews() {
 document.getElementById('getEntertainmentNews').addEventListener('click', getEntertainmentNews);
 
 function getEntertainmentNews() {
-    fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=c02ce0b8722e4571b94f800934093ac1')
+    fetch(`${url}&category=technology`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            let title = '<h1>Entertainment</h1>';
+            let title = '<h1>Technology</h1>';
             let output = ' ';
-            data.articles.map((article) => {
+            data.results.map((article) => {
                 let imageOutput = '';
 
-                if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                 output += `
         <div class="card">
         <h2 class="article-title">${article.title}</h2>
-        <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
         <p class="article-description">${article.description}</p>
         </div>
       `;
@@ -182,9 +187,6 @@ function getEntertainmentNews() {
 document.getElementById('getWorldNews').addEventListener('keypress', getAllNews);
 
 function getAllNews() {
-
-    let url = 'https://newsapi.org/v2/everything?q=';
-    let api = 'c02ce0b8722e4571b94f800934093ac1';
     let textInput = document.getElementById('search');
 
     // Function will capitalize the first letter of every word in the sentence
@@ -200,25 +202,25 @@ function getAllNews() {
 
     if (key == 13) {
 
-        fetch(url + `${topic}` + `&apiKey=${api}`)
+        fetch(`${url}&q=${topic}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 let title = `<h1>${topic} News</h1>`;
                 let output = ' ';
-                data.articles.map((article) => {
+                data.results.map((article) => {
                 
                 let imageOutput = '';
 
-                    if ((article.urlToImage === null) || (article.urlToImage === 'https:nent should be the starting point of the applic')) {
+                    if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
                     imageOutput = './images/No_img.jpg';
                 } else {
-                    imageOutput = `${article.urlToImage}`;
+                    imageOutput = `${article.image_url}`;
                 }
                     output += `
                 <div class="card">
                 <h2 class="article-title">${article.title}</h2>
-                <a href=${article.url} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
+                <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
                 <p class="article-description">${article.description}</p>
                 </div>
             `;
