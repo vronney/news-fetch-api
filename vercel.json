@@ -3,6 +3,5 @@
     "api/*.js": {
       "runtime": "@vercel/node"
     }
-  },
-  "ignoreFiles": ["server.js", ".env"]
+  }
 }
