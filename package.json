@@ -2,9 +2,7 @@
   "name": "news-fetch-api",
   "version": "1.0.0",
   "description": "- Wanted to practice creating a fetch api\r - Requested news feed from NewsApi\r - created navbar menu that pulls specific news sources\r     - US\r     - World\r     - Politics\r     - Business\r     - Tabloid\r     - My News \r - added a search box for the user to enter a topic of their choosing to view\r     - the user enters the topic and then presses enter\r     - added a function to the search field to capitalize the first letter of every word",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +15,5 @@
   "bugs": {
     "url": "https://github.com/vronney/news-fetch-api/issues"
   },
-  "homepage": "https://github.com/vronney/news-fetch-api#readme",
-  "dependencies": {
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0"
-  }
+  "homepage": "https://github.com/vronney/news-fetch-api#readme"
 }
