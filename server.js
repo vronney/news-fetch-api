@@ -24,8 +24,7 @@ app.get('/api/news', async (req, res) => {
     queryParams.set('apikey', apiKey);
 
     const url = `https://newsdata.io/api/1/news?${queryParams.toString()}`;
-    console.log('Fetching:', url);
-
+    
     try {
         const response = await fetch(url);
         console.log('Response status:', response.status);

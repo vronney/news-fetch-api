@@ -381,6 +381,7 @@ body::before {
   color: var(--text-primary);
   margin: 0;
   display: -webkit-box;
+  line-clamp: 4;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
