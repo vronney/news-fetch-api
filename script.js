@@ -1,7 +1,32 @@
-const newsApi = 'pub_87471c6119e680aa3bcc00c80a9c778beda6';
-const url = `https://newsdata.io/api/1/news?apikey=${newsApi}`;
+const url = '/api/news';
+const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzM0MTU1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMWY1ZjkiIGZvbnQtc2l6ZT0iMTgiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
 
-console.log(url);
+function truncateText(text, maxLength = 100) {
+    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
+function fetchAndDisplayNews(params, titleText) {
+    fetch(`${url}?${params}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            let title = `<h1>${titleText}</h1>`;
+            let output = '';
+            data.results.map((article) => {
+                let imageOutput = article.image_url === null ? placeholderImage : article.image_url;
+                output += `
+                <div class="card">
+                <h2 class="article-title">${truncateText(article.title)}</h2>
+                <a href=${article.link} target="_blank" rel="noopener noreferrer"><img class="article-image" src=${imageOutput}></a>
+                <p class="article-description">${truncateText(article.description, 300)}</p>
+                </div>
+                `;
+            });
+            document.getElementById('title').innerHTML = title;
+            document.getElementById('output').innerHTML = output;
+            window.scrollTo(0, 0);
+        });
+}
 
 /**********************US News *****************************************/
 
@@ -10,36 +35,7 @@ document.addEventListener("DOMContentLoaded", getText);
 document.getElementById('getUsNews').addEventListener('click', getText);
 
 function getText() {
-    fetch(`${url}&country=us`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let title = '<h1>Top U.S. Stories</h1>';
-            let output = ' ';
-                       
-            data.results.map((article) => {
-                let imageOutput = '';
-
-                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                output += `
-            <div class="card">
-            <h2 class="article-title">${article.title}</h2>
-            <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-            <p class="article-description">${article.description}</p>
-            </div>
-            `;
-            });
-
-         
-            document.getElementById('title').innerHTML = title;
-            document.getElementById('output').innerHTML = output;
-            // This will have the next window open at the top of the page.  
-            window.scrollTo(0, 0);
-        });
+    fetchAndDisplayNews('country=us&language=en', 'Top U.S. Stories');
 }
 
 /*************** World News *******
@@ -48,33 +44,7 @@ function getText() {
 document.getElementById('getWorldNews').addEventListener('click', getWorldNews);
 
 function getWorldNews() {
-    fetch(`${url}&category=world`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let title = '<h1>World</h1>';
-            let output = ' ';
-            data.results.map((article) => {
-                let imageOutput = '';
-
-                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-      `;
-            });
-            document.getElementById('title').innerHTML = title;
-            document.getElementById('output').innerHTML = output;
-            // This will have the next window open at the top of the page.
-            window.scrollTo(0, 0);
-        });
+    fetchAndDisplayNews('category=world&language=en', 'World');
 }
 
 /******************** Health ******
@@ -83,33 +53,7 @@ function getWorldNews() {
 document.getElementById('getPoliticsNews').addEventListener('click', getPoliticsNews);
 
 function getPoliticsNews() {
-    fetch(`${url}&category=health`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let title = '<h1>Health</h1>';
-            let output = ' ';
-            data.results.map((article) => {
-                let imageOutput = '';
-
-                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-      `;
-            });
-            document.getElementById('title').innerHTML = title;
-            document.getElementById('output').innerHTML = output;
-            // This will have the next window open at the top of the page.
-            window.scrollTo(0, 0);
-        });
+    fetchAndDisplayNews('category=health&language=en', 'Health');
 }
 
 /***************** Business ***********
@@ -118,33 +62,7 @@ function getPoliticsNews() {
 document.getElementById('getBusinessNews').addEventListener('click', getBusinessNews);
 
 function getBusinessNews() {
-    fetch(`${url}&category=business`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let title = '<h1>Business</h1>';
-            let output = ' ';
-            data.results.map((article) => {
-                let imageOutput = '';
-
-                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-      `;
-            });
-            document.getElementById('title').innerHTML = title;
-            document.getElementById('output').innerHTML = output;
-            // This will have the next window open at the top of the page.
-            window.scrollTo(0, 0);
-        });
+    fetchAndDisplayNews('category=business&language=en', 'Business');
 }
 
 
@@ -154,33 +72,7 @@ function getBusinessNews() {
 document.getElementById('getEntertainmentNews').addEventListener('click', getEntertainmentNews);
 
 function getEntertainmentNews() {
-    fetch(`${url}&category=technology`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            let title = '<h1>Technology</h1>';
-            let output = ' ';
-            data.results.map((article) => {
-                let imageOutput = '';
-
-                if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                output += `
-        <div class="card">
-        <h2 class="article-title">${article.title}</h2>
-        <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-        <p class="article-description">${article.description}</p>
-        </div>
-      `;
-            });
-            document.getElementById('title').innerHTML = title;
-            document.getElementById('output').innerHTML = output;
-            // This will have the next window open at the top of the page.
-            window.scrollTo(0, 0);
-        });
+    fetchAndDisplayNews('category=technology&language=en', 'Technology');
 }
 
 /******************** My Preference News ********************************/
@@ -201,40 +93,10 @@ function getAllNews() {
     let key = event.keyCode || event.which;
 
     if (key == 13) {
-
-        fetch(`${url}&q=${topic}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                let title = `<h1>${topic} News</h1>`;
-                let output = ' ';
-                data.results.map((article) => {
-                
-                let imageOutput = '';
-
-                    if ((article.image_url === null) || (article.image_url === 'https:nent should be the starting point of the applic')) {
-                    imageOutput = './images/No_img.jpg';
-                } else {
-                    imageOutput = `${article.image_url}`;
-                }
-                    output += `
-                <div class="card">
-                <h2 class="article-title">${article.title}</h2>
-                <a href=${article.link} target="_blank" rel="noopener referrer"><img class="article-image" src=${imageOutput}></a>
-                <p class="article-description">${article.description}</p>
-                </div>
-            `;
-            });
-                document.getElementById('title').innerHTML = title;
-                document.getElementById('output').innerHTML = output;
-                // This will have the next window open at the top of the page.
-                window.scrollTo(0, 0);
-
-            });
+        fetchAndDisplayNews(`q=${topic}&language=en`, `${topic} News`);
         // clear input
         textInput.value = "";
     }
-
 }
 
 
@@ -254,4 +116,3 @@ function topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
