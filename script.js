@@ -2,7 +2,10 @@ const url = '/api/news';
 const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzM0MTU1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMWY1ZjkiIGZvbnQtc2l6ZT0iMTgiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
 
 function truncateText(text, maxLength = 100) {
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+    if (text == null) return '';
+    if (typeof text !== 'string') text = String(text);
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trimEnd() + '...';
 }
 
 function fetchAndDisplayNews(params, titleText) {
@@ -10,21 +13,42 @@ function fetchAndDisplayNews(params, titleText) {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            let title = `<h1>${titleText}</h1>`;
+            const titleHtml = `<h1>${titleText}</h1>`;
+            const results = Array.isArray(data && data.results) ? data.results : [];
+
+            if (!results.length) {
+                document.getElementById('title').innerHTML = titleHtml;
+                document.getElementById('output').innerHTML = '<p class="empty-state">No results found.</p>';
+                window.scrollTo(0, 0);
+                return;
+            }
+
             let output = '';
-            data.results.map((article) => {
-                let imageOutput = article.image_url === null ? placeholderImage : article.image_url;
+            results.forEach((article) => {
+                const imageOutput = article && article.image_url ? article.image_url : placeholderImage;
+                const link = article && article.link ? article.link : '#';
+                const title = truncateText(article && article.title ? article.title : 'Untitled');
+                const description = truncateText(article && article.description ? article.description : '', 300);
+
                 output += `
                 <div class="card">
-                <h2 class="article-title">${truncateText(article.title)}</h2>
-                <a href=${article.link} target="_blank" rel="noopener noreferrer"><img class="article-image" src=${imageOutput}></a>
-                <p class="article-description">${truncateText(article.description, 300)}</p>
+                  <h2 class="article-title">${title}</h2>
+                  <a href="${link}" target="_blank" rel="noopener noreferrer">
+                    <img class="article-image" src="${imageOutput}" alt="Article image" />
+                  </a>
+                  <p class="article-description">${description}</p>
                 </div>
                 `;
             });
-            document.getElementById('title').innerHTML = title;
+
+            document.getElementById('title').innerHTML = titleHtml;
             document.getElementById('output').innerHTML = output;
             window.scrollTo(0, 0);
+        })
+        .catch((err) => {
+            console.error('Failed to fetch news:', err);
+            document.getElementById('title').innerHTML = `<h1>${titleText}</h1>`;
+            document.getElementById('output').innerHTML = '<p class="error-state">Failed to load news. Please try again later.</p>';
         });
 }
 
@@ -76,9 +100,17 @@ function getEntertainmentNews() {
 }
 
 /******************** My Preference News ********************************/
-document.getElementById('getWorldNews').addEventListener('keypress', getAllNews);
+// Trigger search on Enter key in the search input
+const searchInputEl = document.getElementById('search');
+if (searchInputEl) {
+    searchInputEl.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            getAllNews(e);
+        }
+    });
+}
 
-function getAllNews() {
+function getAllNews(event) {
     let textInput = document.getElementById('search');
 
     // Function will capitalize the first letter of every word in the sentence
@@ -90,10 +122,12 @@ function getAllNews() {
         topic = e.target.value;
     });
 
-    let key = event.keyCode || event.which;
-
-    if (key == 13) {
-        fetchAndDisplayNews(`q=${topic}&language=en`, `${topic} News`);
+    // If called from keypress handler, ensure Enter was pressed
+    if (!event || (event && event.key === 'Enter')) {
+        const q = encodeURIComponent(topic.trim());
+        if (q) {
+            fetchAndDisplayNews(`q=${q}&language=en`, `${topic} News`);
+        }
         // clear input
         textInput.value = "";
     }
